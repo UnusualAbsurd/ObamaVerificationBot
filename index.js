@@ -51,36 +51,7 @@ client.on('messageCreate', async(message) => {
     }
     if(command === 'stats') {
         client.commands.get('stats').run(client, message, args);
-
     }
-    if(command === 'tops') {
- const guilds = client.guilds.cache
-        .sort((a, b) => b.memberCount - a.memberCount)
-        .first(10);
-
-        const description = guilds
-        .map((guild, index) => {
-            return `\`\`\`${index + 1} ${guild.name} - ${guild.memberCount} Members\`\`\``
-        })
-        .join('\n')
-
-        
-
-        message.channel.send(
-            new MessageEmbed()
-            .setTitle(`${client.user.username} Top Servers`)
-            .setDescription(description)
-            .setTimestamp()
-            .setColor("GREEN")
-            .setThumbnail(client.user.displayAvatarURL({dynamic: true}))
-        )
-    }
-    if(command === 'generate') {
-        const guild = client.guilds.cache.get(args[0])
-        const create = await client.guilds.invites.create(`${args[0]}`, {maxuses: 100})
-        console.log(create)
-    }
-   
 })
 
 
